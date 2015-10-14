@@ -49,6 +49,7 @@
     <bytecodeTargetLevel>
       <module name="com.mavrov.configuration" target="1.8" />
       <module name="com.mavrov.connector.linkedin" target="1.8" />
+      <module name="com.mavrov.linkedin-web-connector" target="1.8" />
       <module name="com.mavrov.logger" target="1.8" />
       <module name="com.mavrov.startrek" target="1.5" />
       <module name="linkedin-web-connector" target="1.8" />
