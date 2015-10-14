@@ -10,6 +10,16 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
+    <servlet>
+        <servlet-name>LinkedInServlet</servlet-name>
+        <servlet-class>com.mavrov.linkedin.authorization.AuthorizeLinkedinServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LinkedInServlet</servlet-name>
+        <url-pattern>/linkedin-authorize</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 
 

@@ -22,7 +22,7 @@ public class LinkedinClientTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
-    @Inject
+    @Inject @LinkedInProcess
     private ConnectorClient client;
 
     @Test
