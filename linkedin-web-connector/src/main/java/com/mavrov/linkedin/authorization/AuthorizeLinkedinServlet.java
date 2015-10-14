@@ -18,7 +18,7 @@ public class AuthorizeLinkedinServlet extends HttpServlet {
     private ConnectorClient client;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
+//        PrintWriter out = response.getWriter();
 //        out.println("<html>");
 //        out.println("<body>");
 //        out.println("<h1>Hello Servlet Get</h1>");
