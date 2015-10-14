@@ -1,0 +1,3 @@
+https://developer.linkedin.com/docs/rest-api
+https://www.linkedin.com/developer/apps/3824763/auth
+https://developer.linkedin.com/docs/oauth2
