@@ -12,7 +12,9 @@ import javax.inject.Inject;
 /**
  * @author serg.mavrov@gmail.com
  */
-@ApplicationScoped @LinkedInProcess @Default
+@ApplicationScoped
+@LinkedInProcess
+@Default
 public class LinkedinClient implements ConnectorClient {
 
     @Inject
