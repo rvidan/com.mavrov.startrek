@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/configuration/com.mavrov.configuration.iml" filepath="$PROJECT_DIR$/configuration/com.mavrov.configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/logger/com.mavrov.logger.iml" filepath="$PROJECT_DIR$/logger/com.mavrov.logger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.mavrov.startrek.iml" filepath="$PROJECT_DIR$/com.mavrov.startrek.iml" />
+    </modules>
+  </component>
+</project>
