@@ -1,0 +1,16 @@
+<web-app>
+
+    <display-name>${parent.version}-${buildNumber}|${app.name}-${app.version}-${app.systemtype}</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>
+
+
+

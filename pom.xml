@@ -35,6 +35,7 @@
         <module>logger</module>
         <module>configuration</module>
         <module>linkedin-connector</module>
+		<module>linkedin-web-connector</module>
     </modules>
 
     <build>

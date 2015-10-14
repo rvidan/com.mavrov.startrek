@@ -38,12 +38,20 @@
         <processorPath useClasspath="true" />
         <module name="com.mavrov.connector.linkedin" />
       </profile>
+      <profile default="false" name="Annotation profile for linkedin-web-connector" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="linkedin-web-connector" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="com.mavrov.configuration" target="1.8" />
       <module name="com.mavrov.connector.linkedin" target="1.8" />
       <module name="com.mavrov.logger" target="1.8" />
       <module name="com.mavrov.startrek" target="1.5" />
+      <module name="linkedin-web-connector" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
