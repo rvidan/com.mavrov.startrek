@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/configuration/com.mavrov.configuration.iml" filepath="$PROJECT_DIR$/configuration/com.mavrov.configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/linkedin-connector/com.mavrov.connector.linkedin.iml" filepath="$PROJECT_DIR$/linkedin-connector/com.mavrov.connector.linkedin.iml" />
       <module fileurl="file://$PROJECT_DIR$/logger/com.mavrov.logger.iml" filepath="$PROJECT_DIR$/logger/com.mavrov.logger.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.mavrov.startrek.iml" filepath="$PROJECT_DIR$/com.mavrov.startrek.iml" />
     </modules>
