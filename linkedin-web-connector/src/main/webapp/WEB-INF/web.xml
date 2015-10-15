@@ -11,13 +11,23 @@
     </session-config>
 
     <servlet>
-        <servlet-name>LinkedInServlet</servlet-name>
-        <servlet-class>com.mavrov.linkedin.authorization.AuthorizeLinkedinServlet</servlet-class>
+        <servlet-name>LinkedInAuthRequestServlet</servlet-name>
+        <servlet-class>com.mavrov.linkedin.authorization.LinkedinAuthRequestServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>LinkedInServlet</servlet-name>
+        <servlet-name>LinkedInAuthRequestServlet</servlet-name>
         <url-pattern>/linkedin-authorize</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LinkedInAuthResponseServlet</servlet-name>
+        <servlet-class>com.mavrov.linkedin.authorization.LinkedinAuthResponseServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LinkedInAuthResponseServlet</servlet-name>
+        <url-pattern>/linkedin-auth-response</url-pattern>
     </servlet-mapping>
 
 </web-app>

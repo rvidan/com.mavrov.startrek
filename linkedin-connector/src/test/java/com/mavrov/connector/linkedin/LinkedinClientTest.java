@@ -28,7 +28,6 @@ public class LinkedinClientTest {
     @Test
     public void testAuthorization() {
         Assert.assertNotNull(client);
-        client.authorize();
     }
 
 }

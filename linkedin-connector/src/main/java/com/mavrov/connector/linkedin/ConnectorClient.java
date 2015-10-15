@@ -5,6 +5,6 @@ package com.mavrov.connector.linkedin;
  */
 public interface ConnectorClient {
 
-    String authorize();
+
 
 }
