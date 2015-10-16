@@ -2,3 +2,9 @@
 /linkedin-connector/target
 /linkedin-web-connector/target
 /logger/target
+/*.iml
+/.idea
+/configuration/*.iml
+/linkedin-connector/*.iml
+/linkedin-web-connector/*.iml
+/logger/*.iml
