@@ -36,6 +36,7 @@
         <module>configuration</module>
         <module>linkedin-connector</module>
 		<module>linkedin-web-connector</module>
+		<module>startrek-web</module>
     </modules>
 
     <build>
