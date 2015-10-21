@@ -13,7 +13,7 @@
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>profile</from-outcome>
+            <from-outcome>simple-profile</from-outcome>
             <to-view-id>/profile.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
