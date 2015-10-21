@@ -6,44 +6,31 @@ package com.mavrov.startrek.profile;
 public class ProfileBean {
 
     private String result;
-    private String conversionSummary;
-    private String buttonLabel;
+    private String login;
+    private String password;
 
     public String getResult() {
         return result;
     }
 
     public void setResult(String result) {
-        double conversionFactor = 39.37;
-        try {
-            double metersToConvert = Double.parseDouble(result);
-            double inches = conversionFactor*metersToConvert;
-            String inchesString = Double.toString(inches);
-            this.result = result + " m = " + inchesString + " inches";
-            setConversionSummary("CONVERSION RESULT");
-            setButtonLabel("Convert another number");
-        } catch (NumberFormatException e) {
-            this.result = "\"" + result + "\" is not a number.";
-            if (result.isEmpty()) this.result = "You forgot to specify the number of meters.";
-            setConversionSummary("CONVERSION FAILED");
-            setButtonLabel("Try once more");
-        }
+        this.result = result + " SUCCESS!";
     }
 
-    public String getConversionSummary() {
-        return conversionSummary;
+    public String getLogin() {
+        return login;
     }
 
-    public void setConversionSummary(String conversionSummary) {
-        this.conversionSummary = conversionSummary;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public String getButtonLabel() {
-        return buttonLabel;
+    public String getPassword() {
+        return password;
     }
 
-    public void setButtonLabel(String buttonLabel) {
-        this.buttonLabel = buttonLabel;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
