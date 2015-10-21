@@ -1,11 +1,13 @@
 /configuration/target
+/profile-repo/target
 /linkedin-connector/target
 /linkedin-web-connector/target
 /logger/target
 /*.iml
 /.idea
 /configuration/*.iml
+/profile-repo/*.iml
 /linkedin-connector/*.iml
 /linkedin-web-connector/*.iml
 /logger/*.iml
-/startrek-web/com.mavrov.startrek.web.iml
+/startrek-web/*.iml
