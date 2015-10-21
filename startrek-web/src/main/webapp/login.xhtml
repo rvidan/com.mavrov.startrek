@@ -26,7 +26,7 @@
         display:block;
         }
         .caddy input[type=text]{
-        width:200px;
+        width:150px;
         border:1px solid rgba(0,0,0,.2);
         padding:2px;
         color:#555;
@@ -35,6 +35,7 @@
         box-shadow:0 2px 0 rgba(0,0,0,.1);
         }
         .caddy input[type=button]{
+        width:200px;
         border:1px solid #4096ee;
         /* Permalink - use to edit and share this gradient:
         http://colorzilla.com/gradient-editor/#4096ee+0,4096ee+100;Blue+Flat+%232 */
@@ -70,17 +71,23 @@
             color: #444;">
 
     <h3 id="title" style="text-align: center;/* background-color: red; */padding: 10px 0 6px 0;border-bottom: 1px #999;box-shadow: 0 2px 2px rgba(0,0,0,.03);">
-        Star Trek</h3>
+        Star Trek DEMO</h3>
 
     <div class="form_caddy">
 
     <h:form>
         <!--<h:outputText value="StarTrek - DEMO"/>-->
         <br/>
-        <h:inputText value="#{profileBean.result}" size="16"/><br/>
-        <h:inputText value="#{profileBean.result}" size="16"/><br/><br/>
+        <h:outputText value="Email" style="text-align: center;/* background-color: red; */padding: 10px 0 6px 0;border-bottom: 1px #999;box-shadow: 0 2px 2px rgba(0,0,0,.03);"/>
+        <h:inputText value="#{profileBean.result}" size="15"/><br/>
+        <h:outputText value="Password" style="text-align: center;/* background-color: red; */padding: 10px 0 6px 0;border-bottom: 1px #999;box-shadow: 0 2px 2px rgba(0,0,0,.03);"/>
+        <h:inputText value="#{profileBean.result}" size="15"/><br/><br/>
+        <!-- -=-=- -->
         <h:commandButton action="simple-profile" value="St-Login" image="images/Sign-St-Small---Default.png"/><br/>
-        <h:commandButton action="linkedin-profile" value="Li-Login" image="images/Sign-In-Small---Default.png"/><br/>
+        <!--<h:commandButton action="linkedin-profile" value="Li-Login" image="images/Sign-In-Small-&#45;&#45;Default.png"/><br/>-->
+        <a href="http://mavrov.de:28080/linkedin-web-connector/linkedin-authorize">
+            <h:graphicImage name="images/Sign-In-Small---Default.png" />
+        </a>
     </h:form>
 
     </div></div>

@@ -2,3 +2,4 @@ https://developer.linkedin.com/docs/rest-api
 https://www.linkedin.com/developer/apps/3824763/auth
 https://developer.linkedin.com/docs/oauth2
 http://habrahabr.ru/post/192434/
+http://www.jsftoolbox.com/documentation/help/01-Introduction/index.jsf

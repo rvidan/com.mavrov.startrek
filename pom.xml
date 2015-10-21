@@ -74,6 +74,27 @@
                     <version>1.9.1</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <configuration>
+                        <hostname>****</hostname>
+                        <port>9990</port>
+                        <username>****</username>
+                        <password>****</password>
+                        <force>true</force>
+                        <filename>${war.archive.name}.war</filename>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
