@@ -1,8 +1,11 @@
 package com.mavrov.startrek.profile;
 
+import javax.faces.bean.RequestScoped;
+
 /**
  * @author serg.mavrov@gmail.com
  */
+@RequestScoped
 public class ProfileBean {
 
     private String result;

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="DCS_PU" transaction-type="JTA">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:jboss/datasources/startrek_db</jta-data-source>
+
+        <class>com.mavrov.entity.ProfileEntity</class>
+
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+        <properties>
+
+            <!-- SQL dialect -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+
+            <!-- Enable Hibernate's automatic session context management -->
+            <!--<property name="hibernate.current_session_context_class" value="thread"/>-->
+            <!--<property name="hibernate.transaction.factory_class"-->
+            <!--value="org.hibernate.transaction.JDBCTransactionFactory"/>-->
+
+            <property name="hibernate.current_session_context_class" value="jta"/>
+            <property name="hibernate.transaction.factory_class"
+                      value="org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory"/>
+            <property name="hibernate.transaction.flush_before_completion" value="true"/>
+            <property name="hibernate.transaction.jta.platform"
+                      value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform"/>
+
+            <!-- Enable lazy loading outside transaction -->
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+
+            <!--<property name="hibernate.jndi.class" value="org.jnp.interfaces.NamingContextFactory"/>-->
+            <property name="hibernate.transaction.manager_lookup_class"
+                      value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
+
+            <!-- Disable the second-level cache  -->
+            <!--
+            <property name="cache.provider_class" value= org.hibernate.cache.internal.NoCacheProvider/>
+            -->
+
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.infinispan.JndiInfinispanRegionFactory"/>
+            <property name="hibernate.cache.infinispan.cachemanager"
+                      value="java:jboss/infinispan/container/startrek_cache"/>
+            <property name="hibernate.cache.infinispan.statistics" value="true"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+
+            <!--<property name="hibernate.cache.use_second_level_cache" value="true"/>-->
+            <!--<property name="hibernate.cache.use_query_cache" value="true"/>-->
+            <!--<property name="hibernate.cache.region.factory_class"-->
+            <!--         value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
+
+            <!-- Echo all executed SQL to stdout -->
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.cache.use_structured_entries" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+
+            <!--  Enable pool of connections -->
+            <!--<property name="hibernate.c3p0.min_size" value="5"/>-->
+            <!--<property name="hibernate.c3p0.max_size" value="20"/>-->
+            <!--<property name="hibernate.c3p0.timeout" value="20"/>-->
+            <!--<property name="hibernate.c3p0.max_statements" value="50"/>-->
+            <!--<property name="hibernate.c3p0.idle_test_period" value="3000"/>-->
+
+            <!--localization properties-->
+            <property name="hibernate.connection.useUnicode" value="true"/>
+            <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+            <property name="hibernate.connection.charSet" value="UTF-8"/>
+
+            <!-- Drop and re-create the database schema on startup -->
+            <!--
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            -->
+
+            <!-- Envers config -->
+            <!--<property name="org.hibernate.envers.audit_table_prefix"       value=""/>-->
+            <!--<property name="org.hibernate.envers.audit_table_suffix"       value="_audit"/>-->
+            <!--<property name="org.hibernate.envers.audit_strategy"           value="org.hibernate.envers.strategy.DefaultAuditStrategy"/>-->
+            <!--<property name="org.hibernate.envers.revision_field_name"      value="revision"/>-->
+            <!--<property name="org.hibernate.envers.revision_type_field_name" value="revision_type"/>-->
+            <!--<property name="org.hibernate.envers.modified_flag_suffix"     value="_mod"/>-->
+
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
