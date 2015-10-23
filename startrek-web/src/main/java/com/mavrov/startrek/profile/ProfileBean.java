@@ -1,12 +1,13 @@
 package com.mavrov.startrek.profile;
 
 import javax.faces.bean.RequestScoped;
+import java.io.Serializable;
 
 /**
  * @author serg.mavrov@gmail.com
  */
 @RequestScoped
-public class ProfileBean {
+public class ProfileBean implements Serializable {
 
     private String result;
     private String login;
