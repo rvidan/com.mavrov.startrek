@@ -5,6 +5,7 @@ import com.mavrov.repository.ProfileRepository;
 import com.mavrov.startrek.profile.ProfileBean;
 import org.jboss.logging.Logger;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 /**
  * @author serg.mavrov@gmail.com
  */
+@ManagedBean(name="navigationController")
 @SessionScoped
 public class NavigationController implements Serializable {
 

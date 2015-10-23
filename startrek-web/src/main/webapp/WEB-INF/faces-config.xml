@@ -14,6 +14,10 @@
         <managed-bean-name>navigationController</managed-bean-name>
         <managed-bean-class>com.mavrov.startrek.navigation.NavigationController</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>profileBean</property-name>
+            <value>#{profileBean}</value>
+        </managed-property>
     </managed-bean>
 
     <navigation-rule>
