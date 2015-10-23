@@ -81,12 +81,12 @@
         <!--<h:outputText value="StarTrek - DEMO"/>-->
         <br/>
         <h:outputText value="Email" style="text-align: center;/* background-color: red; */padding: 10px 0 6px 0;border-bottom: 1px #999;box-shadow: 0 2px 2px rgba(0,0,0,.03);"/>
-        <h:inputText value="#{profileBean.login}" size="15"/><br/>
+        <h:inputText value="#{profileBean.login}"  binding="#{user_email}" size="15"/><br/>
         <h:outputText value="Password" style="text-align: center;/* background-color: red; */padding: 10px 0 6px 0;border-bottom: 1px #999;box-shadow: 0 2px 2px rgba(0,0,0,.03);"/>
         <h:inputText value="#{profileBean.password}" size="15"/><br/><br/>
         <!-- -=-=- -->
-        <h:commandButton action="#{navigationController.showPage}" value="St-Login" image="images/Sign-St-Small---Default.png">
-            <f:param name="email" value="test" />
+        <h:commandButton action="#{navigationController.showPage(user_email.value)}" value="St-Login" image="images/Sign-St-Small---Default.png">
+            <!--<f:param name="email" value="test" />-->
         </h:commandButton>
         <br/>
         <!--<h:commandButton action="linkedin-profile" value="Li-Login" image="images/Sign-In-Small-&#45;&#45;Default.png"/><br/>-->
