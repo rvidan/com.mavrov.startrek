@@ -25,7 +25,7 @@ public class NavigationController implements Serializable {
     private ProfileRepository profileRepo;
 
     @ManagedProperty(value = "#{profileBean}")
-    private ProfileBean currentProfile;
+    private ProfileBean profileBean;
 
 //    public String showPage() {
 //        FacesContext context = FacesContext.getCurrentInstance();
@@ -43,13 +43,21 @@ public class NavigationController implements Serializable {
         if (!email.isEmpty() && profileRepo.findByEmail(email) != null) {
             ProfileEntity dbProfile = profileRepo.findByEmail(email);
             //-=-=-
-            currentProfile.setName1(dbProfile.getName1());
-            currentProfile.setName2(dbProfile.getName2());
-            currentProfile.setPosition(dbProfile.getPosition());
-            currentProfile.setCompanyName(dbProfile.getCompanyName());
+            profileBean.setName1(dbProfile.getName1());
+            profileBean.setName2(dbProfile.getName2());
+            profileBean.setPosition(dbProfile.getPosition());
+            profileBean.setCompanyName(dbProfile.getCompanyName());
             return "profile-view";
         } else {
             return "profile-edit";
         }
+    }
+
+    public ProfileBean getProfileBean() {
+        return profileBean;
+    }
+
+    public void setProfileBean(ProfileBean profileBean) {
+        this.profileBean = profileBean;
     }
 }
