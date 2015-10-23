@@ -29,7 +29,11 @@ public class NavigationController implements Serializable {
     }
 
     public String showPage(String email) {
-        logger.info("email parameter=" + email);
+        logger.info(">>>>>");
+        String param = email.isEmpty() ? "empty" : "not empty";
+        logger.info("email parameter is " + param);
+        logger.info("email parameter=<" + email + ">");
+        logger.info("<<<<<");
         if (!email.isEmpty() && profileRepo.findByEmail(email) != null) {
             return "profile-view";
         } else {
