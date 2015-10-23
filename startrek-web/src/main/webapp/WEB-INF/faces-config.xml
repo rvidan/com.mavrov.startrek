@@ -45,10 +45,26 @@
     </navigation-rule>
 
     <navigation-rule>
+        <from-view-id>/profile-view.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>profile-edit</from-outcome>
+            <to-view-id>/profile-edit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
         <from-view-id>/profile-edit.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>logout</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/profile-edit.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>profile-save</from-outcome>
+            <to-view-id>/profile-view.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
