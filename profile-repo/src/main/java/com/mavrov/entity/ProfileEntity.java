@@ -43,6 +43,17 @@ public class ProfileEntity extends StandardEntity {
     @Column(name = "company_name", nullable = false)
     private String companyName;
 
+    public ProfileEntity() {
+    }
+
+    public ProfileEntity(String name1, String name2, String position, String companyName) {
+        this.id = id;
+        this.name1 = name1;
+        this.name2 = name2;
+        this.position = position;
+        this.companyName = companyName;
+    }
+
     public BigInteger getId() {
         return id;
     }

@@ -1,5 +1,6 @@
 package com.mavrov.startrek.navigation;
 
+import com.mavrov.repository.ProfileRepository;
 import org.jboss.logging.Logger;
 
 import javax.faces.bean.SessionScoped;
@@ -17,6 +18,9 @@ public class NavigationController implements Serializable {
     @Inject
     private transient Logger logger;
 
+    @Inject
+    private ProfileRepository profileRepo;
+
     public String showPage() {
         FacesContext context = FacesContext.getCurrentInstance();
         Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
@@ -26,7 +30,7 @@ public class NavigationController implements Serializable {
 
     public String showPage(String email) {
         logger.info("email parameter=" + email);
-        if (!email.isEmpty()) {
+        if (!email.isEmpty() && profileRepo.findByEmail(email) != null) {
             return "profile-view";
         } else {
             return "profile-edit";
