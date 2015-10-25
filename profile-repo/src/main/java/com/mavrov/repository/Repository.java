@@ -11,10 +11,6 @@ import java.util.List;
  */
 public interface Repository<DB_OBJECT extends StandardEntity> {
 
-    DB_OBJECT findBy(Predicate... restrictions);
-
-    List<DB_OBJECT> findAllBy(Predicate... restrictions);
-
     DB_OBJECT create(DB_OBJECT t);
 
     DB_OBJECT find(BigInteger id);

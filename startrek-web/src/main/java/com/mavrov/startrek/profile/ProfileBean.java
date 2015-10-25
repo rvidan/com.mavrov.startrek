@@ -1,7 +1,12 @@
 package com.mavrov.startrek.profile;
 
+import com.mavrov.entity.ProfileEntity;
+import com.mavrov.repository.ProfileRepository;
+import org.jboss.logging.Logger;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import java.io.Serializable;
 
 /**
@@ -10,6 +15,13 @@ import java.io.Serializable;
 @ManagedBean(name="profileBean")
 @SessionScoped
 public class ProfileBean implements Serializable {
+
+    @Inject
+    private transient Logger logger;
+
+    @Inject
+    private ProfileRepository profileRepo;
+
 
     private String result;
     private String login;
@@ -75,4 +87,21 @@ public class ProfileBean implements Serializable {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    public void load() {
+        ProfileEntity dbProfile = profileRepo.findByEmail(login);
+        if (dbProfile != null) {
+            dbProfile = new ProfileEntity();
+            setName1(dbProfile.getName1());
+            setName2(dbProfile.getName2());
+            setPosition(dbProfile.getPosition());
+            setCompanyName(dbProfile.getCompanyName());
+        } else {
+            setName1("");
+            setName2("");
+            setPosition("");
+            setCompanyName("");
+        }
+    }
+
 }
