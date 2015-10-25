@@ -42,12 +42,26 @@ public abstract class AbstractRepository<ENTITY extends StandardEntity> implemen
 
     public abstract Class<ENTITY> getEntityClass();
 
+    public CriteriaBuilder getBuilder() {
+        return builder;
+    }
+
+    protected Predicate createPredicate(String fieldName, Object parameter) {
+        Root<ENTITY> from = selectCriteria.from(getEntityClass());
+        return builder.equal(from.get(fieldName), parameter);
+    }
+
     @Override
     public ENTITY findBy(Predicate... restrictions) {
-        selectCriteria.where(restrictions);
-        TypedQuery<ENTITY> typedQuery = em.createQuery(selectCriteria);
-        typedQuery.setHint(HIBERNATE_CACHE, true);
-        return typedQuery.getSingleResult();
+        try {
+            selectCriteria.where(restrictions);
+            TypedQuery<ENTITY> typedQuery = em.createQuery(selectCriteria);
+            typedQuery.setHint(HIBERNATE_CACHE, true);
+            return typedQuery.getSingleResult();
+        } catch (NoResultException nre) {
+            logger.warn("there is no object by provided predicate");
+            return null;
+        }
     }
 
 
@@ -70,10 +84,10 @@ public abstract class AbstractRepository<ENTITY extends StandardEntity> implemen
     @Override
     public ENTITY find(BigInteger id) {
         ENTITY t = em.find(getEntityClass(), id);
-        if (t == null) {
-            throw new NoResultException("There is no " + getEntityClass().getSimpleName() +
-                    " with id = " + id);
-        }
+//        if (t == null) {
+//            throw new NoResultException("There is no " + getEntityClass().getSimpleName() +
+//                    " with id = " + id);
+//        }
         return t;
     }
 

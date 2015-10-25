@@ -78,13 +78,18 @@
     <div class="form_caddy">
     <h:form>
         <h:outputText value="StarTrek - Profile Edit"/><br/><br/>
+        <h:outputText value="Email"/><br/>
         <h:outputText value="#{profileBean.login}"/><br/>
+        <h:outputText value="Password"/><br/>
         <h:inputText value="#{profileBean.password}"/><br/>
+        <h:outputText value="Name"/><br/>
         <h:inputText value="#{profileBean.name1}"/><br/>
         <h:inputText value="#{profileBean.name2}"/><br/>
+        <h:outputText value="Position"/><br/>
         <h:inputText value="#{profileBean.position}"/><br/>
+        <h:outputText value="Company"/><br/>
         <h:inputText value="#{profileBean.companyName}"/><br/><br/>
-        <h:commandButton action="profile-save" value="Save"/>
+        <h:commandButton action="#{navigationController.saveCurrentProfile()}" value="Save"/>
         <h:commandButton action="logout" value="Logout"/>
     </h:form>
 

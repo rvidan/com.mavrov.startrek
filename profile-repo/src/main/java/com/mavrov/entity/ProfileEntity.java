@@ -9,13 +9,13 @@ import java.math.BigInteger;
  * @author serg.mavrov@gmail.com
  */
 @Entity
-@Table(name = "profiles", schema = "STARTREK")
+@Table(name = "profiles", schema = "startrek")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class ProfileEntity extends StandardEntity {
 
     @TableGenerator(name = "entity_id_generator",
             table = "entity_ids",
-            schema = "STARTREK",
+            schema = "startrek",
             pkColumnName = "gen_name",
             pkColumnValue = "profiles",
             valueColumnName = "gen_value",
@@ -26,6 +26,10 @@ public class ProfileEntity extends StandardEntity {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "entity_id_generator")
     private BigInteger id;
+
+    @Basic
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
     @Basic
     @Column(name = "name1", nullable = false)
@@ -46,8 +50,8 @@ public class ProfileEntity extends StandardEntity {
     public ProfileEntity() {
     }
 
-    public ProfileEntity(String name1, String name2, String position, String companyName) {
-        this.id = id;
+    public ProfileEntity(String email, String name1, String name2, String position, String companyName) {
+        this.email = email;
         this.name1 = name1;
         this.name2 = name2;
         this.position = position;
@@ -94,9 +98,18 @@ public class ProfileEntity extends StandardEntity {
         this.companyName = companyName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "ProfileEntity{" +
+                "email" + email +
                 "id=" + id +
                 ", name1='" + name1 + '\'' +
                 ", name2='" + name2 + '\'' +
