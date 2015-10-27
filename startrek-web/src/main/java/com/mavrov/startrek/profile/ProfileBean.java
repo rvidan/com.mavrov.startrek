@@ -87,23 +87,26 @@ public class ProfileBean implements Serializable {
         this.companyName = companyName;
     }
 
-    public void load() {
+    public Boolean load() {
+        boolean res = false;
         ProfileEntity dbProfile = profileRepo.findByEmail(login);
         if (dbProfile != null) {
-            dbProfile = new ProfileEntity();
             setName1(dbProfile.getName1());
             setName2(dbProfile.getName2());
             setPosition(dbProfile.getPosition());
             setCompanyName(dbProfile.getCompanyName());
+            res = true;
         } else {
             setName1("");
             setName2("");
             setPosition("");
             setCompanyName("");
         }
+        return res;
     }
 
-    public void save() {
+    public Boolean save() {
+        boolean res = false;
         ProfileEntity dbProfile = profileRepo.findByEmail(getLogin());
         if (dbProfile == null) {
             dbProfile = new ProfileEntity(
@@ -114,6 +117,7 @@ public class ProfileBean implements Serializable {
                     getCompanyName()
             );
             profileRepo.create(dbProfile);
+            res = true;
         } else {
             dbProfile.setName1(getName1());
             dbProfile.setName2(getName2());
@@ -121,6 +125,7 @@ public class ProfileBean implements Serializable {
             dbProfile.setCompanyName(getCompanyName());
             profileRepo.update(dbProfile);
         }
+        return res;
     }
 
 }
