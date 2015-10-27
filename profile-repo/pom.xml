@@ -142,11 +142,6 @@
             <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>net.sourceforge.cobertura</groupId>
-            <artifactId>cobertura</artifactId>
-        </dependency>
-
     </dependencies>
 
 </project>

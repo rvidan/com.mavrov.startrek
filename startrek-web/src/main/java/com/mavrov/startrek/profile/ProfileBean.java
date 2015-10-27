@@ -7,6 +7,7 @@ import org.jboss.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
@@ -110,6 +111,7 @@ public class ProfileBean implements Serializable {
 
     public Boolean save() {
         boolean res = false;
+        profileRepo.getEm().getTransaction().begin();
         ProfileEntity dbProfile = profileRepo.findByEmail(getLogin());
         if (dbProfile == null) {
             dbProfile = new ProfileEntity(
@@ -128,6 +130,7 @@ public class ProfileBean implements Serializable {
             dbProfile.setCompanyName(getCompanyName());
             profileRepo.update(dbProfile);
         }
+        profileRepo.getEm().getTransaction().commit();
         return res;
     }
 

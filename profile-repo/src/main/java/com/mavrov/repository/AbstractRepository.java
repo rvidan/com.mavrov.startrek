@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public abstract class AbstractRepository<ENTITY extends StandardEntity> implemen
     }
 
     @Override
-    @Transactional(Transactional.TxType.REQUIRED)
+//    @Transactional(Transactional.TxType.REQUIRED)
     public ENTITY create(ENTITY t) {
         em.persist(t);
         logger.debug("The " + t + " created.");
@@ -64,20 +63,20 @@ public abstract class AbstractRepository<ENTITY extends StandardEntity> implemen
     }
 
     @Override
-    @Transactional(Transactional.TxType.REQUIRED)
+//    @Transactional(Transactional.TxType.REQUIRED)
     public ENTITY update(ENTITY t) {
         return em.merge(t);
     }
 
     @Override
-    @Transactional(Transactional.TxType.REQUIRED)
+//    @Transactional(Transactional.TxType.REQUIRED)
     public void delete(ENTITY t) {
         ENTITY tUp = update(t);
         em.remove(tUp);
     }
 
     @Override
-    @Transactional(Transactional.TxType.REQUIRED)
+//    @Transactional(Transactional.TxType.REQUIRED)
     public void delete(BigInteger id) {
         ENTITY t = find(id);
         delete(t);
