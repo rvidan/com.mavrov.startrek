@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * @author serg.mavrov@gmail.com
  */
-@ManagedBean(name="profileBean")
+@ManagedBean(name = "profileBean")
 @SessionScoped
 public class ProfileBean implements Serializable {
 
@@ -21,7 +21,6 @@ public class ProfileBean implements Serializable {
 
     @Inject
     private ProfileRepository profileRepo;
-
 
     private String result;
     private String login;
@@ -101,6 +100,26 @@ public class ProfileBean implements Serializable {
             setName2("");
             setPosition("");
             setCompanyName("");
+        }
+    }
+
+    public void save() {
+        ProfileEntity dbProfile = profileRepo.findByEmail(getLogin());
+        if (dbProfile == null) {
+            dbProfile = new ProfileEntity(
+                    getLogin(),
+                    getName1(),
+                    getName2(),
+                    getPosition(),
+                    getCompanyName()
+            );
+            profileRepo.create(dbProfile);
+        } else {
+            dbProfile.setName1(getName1());
+            dbProfile.setName2(getName2());
+            dbProfile.setPosition(getPosition());
+            dbProfile.setCompanyName(getCompanyName());
+            profileRepo.update(dbProfile);
         }
     }
 

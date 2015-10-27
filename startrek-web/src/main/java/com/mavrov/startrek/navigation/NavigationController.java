@@ -49,7 +49,6 @@ public class NavigationController implements Serializable {
 
         ProfileEntity dbProfile = profileRepo.findByEmail(email);
         if (dbProfile != null) {
-            dbProfile = new ProfileEntity();
             profileBean.setName1(dbProfile.getName1());
             profileBean.setName2(dbProfile.getName2());
             profileBean.setPosition(dbProfile.getPosition());
