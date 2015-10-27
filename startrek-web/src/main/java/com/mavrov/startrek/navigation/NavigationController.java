@@ -16,6 +16,8 @@ import java.io.Serializable;
 @SessionScoped
 public class NavigationController implements Serializable {
 
+    private static final long serialVersionUID = 3757861024867792981L;
+
     @Inject
     private transient Logger logger;
 

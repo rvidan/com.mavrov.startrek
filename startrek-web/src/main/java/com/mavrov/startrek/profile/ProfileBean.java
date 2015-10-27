@@ -16,6 +16,9 @@ import java.io.Serializable;
 @SessionScoped
 public class ProfileBean implements Serializable {
 
+
+    private static final long serialVersionUID = -4553972476932199560L;
+
     @Inject
     private transient Logger logger;
 
