@@ -10,7 +10,7 @@ import java.math.BigInteger;
  */
 @Entity
 @Table(name = "profiles", schema = "startrek")
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class ProfileEntity extends StandardEntity {
 
     @TableGenerator(name = "entity_id_generator",

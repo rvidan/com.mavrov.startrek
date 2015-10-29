@@ -7,7 +7,6 @@ import org.jboss.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
