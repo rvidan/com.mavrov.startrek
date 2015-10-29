@@ -1,11 +1,12 @@
 package com.mavrov.linkedin.authorization;
 
-import com.mavrov.connector.linkedin.AccessScope;
+import com.mavrov.repository.ProfileRepository;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,9 @@ import java.io.PrintWriter;
  * @author serg.mavrov@gmail.com
  */
 public class LinkedinAuthResponseServlet extends HttpServlet {
+
+    @Inject
+    private ProfileRepository profileRepo;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
@@ -34,21 +38,35 @@ public class LinkedinAuthResponseServlet extends HttpServlet {
             formData.add("code", request.getParameter("code"));
             formData.add("redirect_uri", "http://mavrov.de:28080/linkedin-web-connector/linkedin-auth-response");
             ClientResponse postResponse =
-                    webResourcePost.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
-                            .post(ClientResponse.class, formData);
-            out.println(postResponse.getEntity(String.class));
+                    webResourcePost.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE).post(ClientResponse.class, formData);
             if (postResponse.getStatus() != 200) {
-                throw new IllegalStateException("Failed GET: HTTP error code : "
-                        + postResponse.getStatus());
+                throw new IllegalStateException("Failed to get access code : " + postResponse.getStatus());
             }
+            //-=-=- send the profile request to the linkedin api server
+            String accessTokenRes = postResponse.getEntity(String.class);
+            String[] accessParts = accessTokenRes.split(",");
+            String[] accessTokenParts = accessParts[0].split(":");
+            String[] clearAccessToken = accessTokenParts[1].split("\"");
+            String appKey = clearAccessToken[1];
+            //-=-=-=-
+            if (appKey != null) {
+                WebResource webResource = client
+                        .resource("https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,headline)?format=json");
+                ClientResponse getResponse = webResource.
+                        header("Connection", "Keep-Alive").
+                        header("Authorization", "Bearer " + appKey).
+                        accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+                if (getResponse.getStatus() != 200) {
+                    throw new IllegalStateException("Failed to get the profile : " + getResponse.getStatus());
+                }
+                String output = getResponse.getEntity(String.class);
+                out.println("<h1>PROFILE</h1><br/>");
+                out.println("<h1>" + output + "</h1>");
+
+            }
+            // -=-=-
         }
-        //-=-=-
-        if (request.getParameter("access_token") != null) {
-            request.getParameterMap().keySet().stream().forEach(
-                    parameter ->
-                            out.println("<h1>" + request.getParameter(parameter) + "</h1>")
-            );
-        }
+
     }
 
 }

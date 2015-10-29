@@ -1,0 +1,1 @@
+https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,headline)?format=xml
