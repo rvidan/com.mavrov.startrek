@@ -59,9 +59,9 @@ public class LinkedinAuthResponseServlet extends HttpServlet {
                 if (getResponse.getStatus() != 200) {
                     throw new IllegalStateException("Failed to get the profile : " + getResponse.getStatus());
                 }
-                String output = getResponse.getEntity(String.class);
+                String textProfile = getResponse.getEntity(String.class);
                 out.println("<h1>PROFILE</h1><br/>");
-                out.println("<h1>" + output + "</h1>");
+                out.println("<h1>" + textProfile + "</h1>");
 
             }
             // -=-=-
