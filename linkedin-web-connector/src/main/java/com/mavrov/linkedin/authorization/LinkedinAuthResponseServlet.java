@@ -1,10 +1,13 @@
 package com.mavrov.linkedin.authorization;
 
+import com.mavrov.entity.ProfileEntity;
 import com.mavrov.repository.ProfileRepository;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
@@ -62,11 +65,46 @@ public class LinkedinAuthResponseServlet extends HttpServlet {
                 String textProfile = getResponse.getEntity(String.class);
                 out.println("<h1>PROFILE</h1><br/>");
                 out.println("<h1>" + textProfile + "</h1>");
-
+                // -=-=-=-
+                Object jsonParsed = JSONValue.parse(textProfile);
+                JSONObject jsonProfile = (JSONObject) jsonParsed;
+                out.println(jsonProfile);
+                // -=-=-=-
+                //{"firstName":"Sergii","lastName":"Mavrov","emailAddress":"serg.mavrov@gmail.com",
+                // "headline":"Senior Java Software Engineer at Amadeus IT Group"}
+                out.println("<br/>");
+                String firstName = jsonProfile.get("firstName").toString();
+                String lastName = jsonProfile.get("lastName").toString();
+                String emailAddress = jsonProfile.get("emailAddress").toString();
+                String[] positionCompany = jsonProfile.get("headline").toString().split(" at ");
+                String position = positionCompany[0];
+                String company = positionCompany[1];
+                // -=-=-=-
+                out.println(firstName + "<br/>");
+                out.println(lastName + "<br/>");
+                out.println(emailAddress + "<br/>");
+                out.println(position + "<br/>");
+                out.println(company + "<br/>");
+                out.println("<br/>");
+                saveLinkedinProfile(emailAddress, firstName, lastName, position, company);
             }
             // -=-=-
         }
 
+    }
+
+    private void saveLinkedinProfile(String email, String firstName, String lastName, String position, String company) {
+        ProfileEntity dbProfile = profileRepo.findByEmail(email);
+        if (dbProfile == null) {
+            dbProfile = new ProfileEntity(
+                    email,
+                    firstName,
+                    lastName,
+                    position,
+                    company
+            );
+            profileRepo.create(dbProfile);
+        }
     }
 
 }

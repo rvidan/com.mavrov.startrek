@@ -46,7 +46,7 @@ public abstract class AbstractRepository<ENTITY extends StandardEntity> implemen
     }
 
     @Override
-//    @Transactional(Transactional.TxType.REQUIRED)
+    @Transactional(Transactional.TxType.REQUIRED)
     public ENTITY create(ENTITY t) {
         em.persist(t);
         logger.debug("The " + t + " created.");
